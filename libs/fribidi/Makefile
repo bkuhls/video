@@ -9,12 +9,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=fribidi
-PKG_VERSION:=0.19.7
+PKG_VERSION:=1.0.10
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
-PKG_SOURCE_URL:=http://fribidi.org/download
-PKG_HASH:=08222a6212bbc2276a2d55c3bf370109ae4a35b689acbc66571ad2a670595a8e
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
+PKG_SOURCE_URL:=https://github.com/$(PKG_NAME)/$(PKG_NAME)/releases/download/v$(PKG_VERSION)
+PKG_HASH:=7f1c687c7831499bcacae5e8675945a39bacbad16ecaa945e9454a32df653c01
 
 PKG_FIXUP:=libtool
 PKG_INSTALL:=1
