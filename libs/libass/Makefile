@@ -6,12 +6,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libass
-PKG_VERSION:=0.13.6
+PKG_VERSION:=0.15.0
 PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/libass/libass/releases/download/$(PKG_VERSION)
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_HASH:=f8a874d104e3e72e2cc057e5a1710c650b10367486845a26e5ff28ed7a912c2d
+PKG_HASH:=9f09230c9a0aa68ef7aa6a9e2ab709ca957020f842e52c5b2e52b801a7d9e833
 
 PKG_INSTALL:=1
 
@@ -20,16 +20,16 @@ include $(INCLUDE_DIR)/package.mk
 define Package/libass
   SECTION:=libs
   CATEGORY:=Libraries
-  DEPENDS:=+fontconfig +fribidi +libfreetype
+  DEPENDS:=+fontconfig +fribidi +harfbuzz +libfreetype
   TITLE:=libass
   URL:=https://github.com/libass/libass
   MAINTAINER:=Stijn Tintel <stijn@linux-ipv6.be>
 endef
 
 ifneq ($(CONFIG_TARGET_x86),)
-ifeq ($(CONFIG_YASM),y)
-  CONFIGURE_VARS+= AS=yasm
-  MAKE_FLAGS+= AS=yasm
+ifeq ($(CONFIG_NASM),y)
+  CONFIGURE_VARS+= AS=nasm
+  MAKE_FLAGS+= AS=nasm
 else
   CONFIGURE_VARS+= AS=
   MAKE_FLAGS+= AS=
@@ -38,8 +38,7 @@ endif
 endif
 
 CONFIGURE_ARGS += \
-	--enable-fontconfig \
-	--disable-harfbuzz \
+	--enable-fontconfig
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include/ass $(1)/usr/lib
