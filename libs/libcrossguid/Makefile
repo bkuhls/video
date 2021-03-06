@@ -19,6 +19,7 @@ define Package/libcrossguid
   SECTION:=libs
   CATEGORY:=Libraries
   TITLE:=libcrossguid
+  DEPENDS:=+libuuid
   URL:=https://github.com/graeme-hill/crossguid
   MAINTAINER:=Stijn Tintel <stijn@linux-ipv6.be>
 endef
